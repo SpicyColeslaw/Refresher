@@ -1,4 +1,5 @@
 import java.util.Scanner;
+import java.util.*;
 
 public class Animal {
     //static variable - Shared between all instances of this class.
@@ -165,7 +166,87 @@ public class Animal {
         }
     }
 
+    //Demonstrating for loop
+    protected static void countTo(int startingNumber) {
+        for(int i = startingNumber; i <= 100; i++) {
+            if(i == 90)
+                continue; //jumps to next loop
+            System.out.println(i);
+        }
+    }
+
+    //Demonstrating while loop
+    protected static String printNumbers(int maxNumbers) {
+        int i = 1;
+
+        while( i <(maxNumbers / 2)) {
+            System.out.println(i);
+            i++;
+
+            if(i == (maxNumbers / 2))
+                break;
+        }
+
+        Animal.countTo(maxNumbers/2);
+
+        return "End of printNumbers";
+    }
+
+    protected static void guessMyNumber() {
+        int number;
+
+        do {
+            System.out.println("Guess number up to 100");
+
+            while(!scanner.hasNextInt()) {
+                String numberEntered = scanner.next();
+                System.out.printf("%s is not a number\n", numberEntered);
+                //byte, short, int, long - %d
+                //float, double - %f (EXTRA: %.2f forces two decimal places)
+            }
+
+            number = scanner.nextInt();
+
+
+        } while(number != 50);
+
+        System.out.println("Hey you got it!");
+    }
+
+    public String makeSound() {
+        return "Grr";
+    }
+
+    public static void speakAnimal(Animal randAnimal) {
+        System.out.println("Animal says " + randAnimal.makeSound());
+    }
+
     public static void AnimalMain() {
         Animal animal = new Animal();
+
+        int[] favoriteNumbers;
+        favoriteNumbers = new int[20];
+        favoriteNumbers[0] = 100;
+
+        String[] stringArray = {"Random", "Words", "Here"};
+
+
+        //For each loop
+        for(String word : stringArray) {
+            System.out.println(word);
+
+        }
+
+
+        //copies array with a new length variable
+        String[] copyOfArray = Arrays.copyOf(stringArray, 3);
+
+        //A lot of variables have a to String method
+        System.out.println(Arrays.toString(copyOfArray));
+
+        //Searching for a specific value, returns the index.
+        System.out.println(Arrays.binarySearch(copyOfArray, "Random"));
+
+
     }
 }
